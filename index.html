@@ -249,8 +249,8 @@
     </footer>
 
     <!-- Script JavaScript para manejo de envíos -->
+  <!-- Script JavaScript para manejo de envíos -->
     <script>
-        // CONFIGURACIÓN: Coloca aquí el URL de tu Google Apps Script si deseas recibir las entregas en Google Sheets
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxD9fBS9yuCZI1RhFRYkNoUAMubShgHdH5eNlKDUg9Q3f2yw96vGt8QElXAYsgpixBA/exec"; 
 
         document.getElementById('submissionForm').addEventListener('submit', function(e) {
@@ -261,37 +261,33 @@
             statusMsg.classList.add('bg-blue-100', 'text-blue-700');
             statusMsg.textContent = "Procesando envío...";
 
-            const formData = {
-                studentName: document.getElementById('studentName').value,
-                group: document.getElementById('groupSelect').value,
-                deliverable: document.getElementById('deliverableSelect').value,
-                projectUrl: document.getElementById('projectUrl').value,
-                aiDocUrl: document.getElementById('aiDocUrl').value,
-                timestamp: new Date().toLocaleString()
-            };
+            // Enviamos como URLSearchParams para evitar problemas de CORS con Google Apps Script
+            const formData = new URLSearchParams();
+            formData.append('studentName', document.getElementById('studentName').value);
+            formData.append('group', document.getElementById('groupSelect').value);
+            formData.append('deliverable', document.getElementById('deliverableSelect').value);
+            formData.append('projectUrl', document.getElementById('projectUrl').value);
+            formData.append('aiDocUrl', document.getElementById('aiDocUrl').value);
+            formData.append('timestamp', new Date().toLocaleString());
 
-            if (GOOGLE_SCRIPT_URL !== "") {
-                fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                })
-                .then(() => {
-                    statusMsg.className = "p-4 rounded-lg text-sm bg-green-100 text-green-700";
-                    statusMsg.textContent = "¡Entregable registrado correctamente! Tus datos fueron guardados.";
-                    document.getElementById('submissionForm').reset();
-                })
-                .catch(error => {
-                    statusMsg.className = "p-4 rounded-lg text-sm bg-red-100 text-red-700";
-                    statusMsg.textContent = "Ocurrió un error al enviar el formulario. Intenta nuevamente.";
-                });
-            } else {
-                // Modo demostración/Local storage si no hay script configurado aún
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 
+                    'Content-Type': 'application/x-www-form-urlencoded' 
+                },
+                body: formData.toString()
+            })
+            .then(() => {
                 statusMsg.className = "p-4 rounded-lg text-sm bg-green-100 text-green-700";
-                statusMsg.textContent = "¡Formulario enviado con éxito! (Recuerda conectar tu URL de Google Apps Script en el código JS para guardar en Sheets).";
+                statusMsg.textContent = "¡Entregable registrado correctamente! Tus datos fueron guardados.";
                 document.getElementById('submissionForm').reset();
-            }
+            })
+            .catch(error => {
+                console.error("Error al enviar:", error);
+                statusMsg.className = "p-4 rounded-lg text-sm bg-red-100 text-red-700";
+                statusMsg.textContent = "Ocurrió un error al enviar el formulario. Intenta nuevamente.";
+            });
         });
     </script>
 </body>
