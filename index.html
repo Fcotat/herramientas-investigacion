@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas para la Investigación | Bachillerato Asunción Ixtaltepec</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Fonts/Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2 rounded-lg font-bold text-xl">
+                    <i class="fa-solid fa-microscope"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Herramientas para la Investigación</h1>
+                    <p class="text-xs text-slate-400">Bachillerato Asunción Ixtaltepec • Ciclo 2026-2027</p>
+                </div>
+            </div>
+            <nav class="mt-4 sm:mt-0 flex space-x-4 text-sm font-medium">
+                <a href="#programa" class="hover:text-indigo-400 transition">Programa</a>
+                <a href="#entregas" class="hover:text-indigo-400 transition">Entregas</a>
+                <a href="#evaluacion" class="hover:text-indigo-400 transition">Evaluación</a>
+                <a href="#etica" class="hover:text-indigo-400 transition">Política IA</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white py-16 px-4">
+        <div class="max-w-5xl mx-auto text-center space-y-4">
+            <span class="bg-indigo-500/20 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full border border-indigo-500/30 uppercase tracking-wider">
+                5.º Semestre de Preparatoria
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                Integración de Google Workspace e Inteligencia Artificial
+            </h2>
+            <p class="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base">
+                Espacio de gestión, aprendizaje y entrega de avances metodológicos para el desarrollo de competencias científicas y tecnológicas.
+            </p>
+            <div class="pt-4 flex justify-center items-center space-x-2 text-slate-400 text-xs sm:text-sm">
+                <span><i class="fa-solid fa-user-tie text-indigo-400 mr-1"></i> Prof. Francisco Cota Toledo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+        <!-- Formulario de Envío de Proyectos -->
+        <section id="entregas" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <h3 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-up text-indigo-600"></i> Entrega y Registro de Proyectos
+                    </h3>
+                    <p class="text-sm text-slate-500 mt-1">
+                        Sube aquí los enlaces compartidos de tus avances en Google Drive, Docs, Sites o herramientas de IA. Asegúrate de otorgar permisos de lectura.
+                    </p>
+                </div>
+
+                <form id="submissionForm" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Nombre completo del Alumno / Equipo *</label>
+                            <input type="text" id="studentName" required placeholder="Ej. María López y Carlos Ruíz"
+                                class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Grupo / Semestre *</label>
+                            <select id="groupSelect" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                                <option value="">Selecciona el grupo</option>
+                                <option value="5A">5.º Semestre - Grupo A</option>
+                                <option value="5B">5.º Semestre - Grupo B</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Bloque / Entregable *</label>
+                            <select id="deliverableSelect" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                                <option value="">Selecciona el producto</option>
+                                <option value="Bloque 1">Bloque 1: Protocolo inicial y Mapa Marco Teórico</option>
+                                <option value="Bloque 2">Bloque 2: Cuestionario Forms y Carpeta en Drive</option>
+                                <option value="Bloque 3">Bloque 3: Reporte Estadístico (Sheets) y Citas</option>
+                                <option value="Bloque 4">Bloque 4: Reporte Final y Portafolio Web (Sites)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">URL del Proyecto / Entregable *</label>
+                            <input type="url" id="projectUrl" required placeholder="https://docs.google.com/..."
+                                class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">URL del Anexo de Declaración de IA (Prompts/Bitácora)</label>
+                        <input type="url" id="aiDocUrl" placeholder="https://drive.google.com/..."
+                            class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                        <span class="text-xs text-slate-400">Requerido para el reporte final o entregables que utilicen IA.</span>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit"
+                            class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2.5 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Registrar Entregable
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Mensaje de confirmación -->
+                <div id="statusMessage" class="hidden p-4 rounded-lg text-sm"></div>
+            </div>
+        </section>
+
+        <!-- Programa por Bloques -->
+        <section id="programa" class="space-y-6">
+            <div class="text-center space-y-1">
+                <h3 class="text-2xl font-bold text-slate-900">Programa del Curso por Bloques</h3>
+                <p class="text-sm text-slate-500">Cronograma modular para el desarrollo metodológico del proyecto</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Bloque 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold px-2.5 py-1 bg-indigo-100 text-indigo-700 rounded-md">Semanas 1-4</span>
+                            <span class="text-xs text-slate-400">Bloque 1</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">Delimitación y Búsqueda Científica</h4>
+                        <p class="text-xs text-slate-600 mb-4">Formulación de preguntas de investigación (PICO/SMART) y selección de fuentes confiables con búsquedas avanzadas.</p>
+                        <div class="space-y-1.5 text-xs text-slate-500 mb-4">
+                            <div><strong>Herramientas:</strong> Google Académico, Keep, Perplexity AI, Consensus.</div>
+                            <div><strong>Entregable:</strong> Protocolo inicial y mapa del marco teórico.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold px-2.5 py-1 bg-emerald-100 text-emerald-700 rounded-md">Semanas 5-8</span>
+                            <span class="text-xs text-slate-400">Bloque 2</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">Diseño Metodológico e Instrumentos</h4>
+                        <p class="text-xs text-slate-600 mb-4">Redacción colaborativa del marco teórico y construcción de encuestas digitales con simulación de ítems mediante IA.</p>
+                        <div class="space-y-1.5 text-xs text-slate-500 mb-4">
+                            <div><strong>Herramientas:</strong> Google Forms, Docs, Drive, Gemini, Claude.</div>
+                            <div><strong>Entregable:</strong> Cuestionario validado y estructura en Drive.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold px-2.5 py-1 bg-amber-100 text-amber-700 rounded-md">Semanas 9-12</span>
+                            <span class="text-xs text-slate-400">Bloque 3</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">Procesamiento y Análisis de Datos</h4>
+                        <p class="text-xs text-slate-600 mb-4">Sistematización de respuestas, gráficos dinámicos y citación automatizada en formato APA.</p>
+                        <div class="space-y-1.5 text-xs text-slate-500 mb-4">
+                            <div><strong>Herramientas:</strong> Google Sheets, Docs (Citas), Julius AI, Zotero.</div>
+                            <div><strong>Entregable:</strong> Reporte estadístico y cualitativo.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold px-2.5 py-1 bg-purple-100 text-purple-700 rounded-md">Semanas 13-16</span>
+                            <span class="text-xs text-slate-400">Bloque 4</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-lg mb-2">Redacción, Integridad y Divulgación</h4>
+                        <p class="text-xs text-slate-600 mb-4">Consolidación del informe final con protocolo de honestidad académica y diseño del sitio de divulgación.</p>
+                        <div class="space-y-1.5 text-xs text-slate-500 mb-4">
+                            <div><strong>Herramientas:</strong> Google Slides, Sites, Gamma App, QuillBot.</div>
+                            <div><strong>Entregable:</strong> Reporte final impreso/digital y sitio web del proyecto.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterios de Evaluación y Política de IA -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Criterios de Evaluación -->
+            <section id="evaluacion" class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="text-xl font-bold text-slate-900 border-b pb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-indigo-600"></i> Criterios de Evaluación
+                </h3>
+                <ul class="space-y-3 text-xs sm:text-sm">
+                    <li class="flex justify-between items-center p-2 rounded bg-slate-50">
+                        <span class="font-medium">Evaluación Continua (Portafolio Drive)</span>
+                        <span class="font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">40%</span>
+                    </li>
+                    <li class="flex justify-between items-center p-2 rounded bg-slate-50">
+                        <span class="font-medium">Reporte de Investigación Final</span>
+                        <span class="font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">40%</span>
+                    </li>
+                    <li class="flex justify-between items-center p-2 rounded bg-slate-50">
+                        <span class="font-medium">Defensa y Divulgación Web</span>
+                        <span class="font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">20%</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Política de Inteligencia Artificial -->
+            <section id="etica" class="lg:col-span-2 bg-indigo-900 text-white p-6 rounded-2xl shadow-sm space-y-3">
+                <h3 class="text-xl font-bold border-b border-indigo-800 pb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-robot text-indigo-400"></i> Política de Uso Transparente de IA
+                </h3>
+                <p class="text-xs sm:text-sm text-indigo-200 leading-relaxed">
+                    La Inteligencia Artificial se integrará exclusivamente en calidad de <strong>asistente de investigación</strong> (apoyo en lluvia de ideas, revisión de redacción, depuración de datos y estructuración).
+                </p>
+                <div class="bg-indigo-950/60 p-3 rounded-lg border border-indigo-800 text-xs text-indigo-300">
+                    <i class="fa-solid fa-circle-info text-indigo-400 mr-1"></i>
+                    Todo contenido o análisis derivado de herramientas de IA debe ser estrictamente verificado contra fuentes primarias de literatura científica e indicado en el <strong>Anexo de Declaración de Uso Transparente de IA</strong> (registro de prompts e interacción).
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p>Bachillerato Asunción Ixtaltepec • Asunción Ixtaltepec, Oaxaca, México</p>
+            <p>Asignatura: Herramientas para la Investigación • Prof. Francisco Cota Toledo</p>
+            <p class="text-slate-600 pt-2">© 2026 Profe Cota. Alojado en GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript para manejo de envíos -->
+    <script>
+        // CONFIGURACIÓN: Coloca aquí el URL de tu Google Apps Script si deseas recibir las entregas en Google Sheets
+        const GOOGLE_SCRIPT_URL = ""; 
+
+        document.getElementById('submissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const statusMsg = document.getElementById('statusMessage');
+            statusMsg.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+            statusMsg.classList.add('bg-blue-100', 'text-blue-700');
+            statusMsg.textContent = "Procesando envío...";
+
+            const formData = {
+                studentName: document.getElementById('studentName').value,
+                group: document.getElementById('groupSelect').value,
+                deliverable: document.getElementById('deliverableSelect').value,
+                projectUrl: document.getElementById('projectUrl').value,
+                aiDocUrl: document.getElementById('aiDocUrl').value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            if (GOOGLE_SCRIPT_URL !== "") {
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                })
+                .then(() => {
+                    statusMsg.className = "p-4 rounded-lg text-sm bg-green-100 text-green-700";
+                    statusMsg.textContent = "¡Entregable registrado correctamente! Tus datos fueron guardados.";
+                    document.getElementById('submissionForm').reset();
+                })
+                .catch(error => {
+                    statusMsg.className = "p-4 rounded-lg text-sm bg-red-100 text-red-700";
+                    statusMsg.textContent = "Ocurrió un error al enviar el formulario. Intenta nuevamente.";
+                });
+            } else {
+                // Modo demostración/Local storage si no hay script configurado aún
+                statusMsg.className = "p-4 rounded-lg text-sm bg-green-100 text-green-700";
+                statusMsg.textContent = "¡Formulario enviado con éxito! (Recuerda conectar tu URL de Google Apps Script en el código JS para guardar en Sheets).";
+                document.getElementById('submissionForm').reset();
+            }
+        });
+    </script>
+</body>
+</html>
